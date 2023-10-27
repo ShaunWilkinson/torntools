@@ -1,0 +1,47 @@
+extends theme/default
+
+block content
+	script(type="text/javascript", src='/javascript/javascript.js')
+
+	header.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0.shadow
+		a.navbar-brand.col-md-3.col-lg-2.me-0.px-3(href='#') Example
+		button.navbar-toggler.position-absolute.d-md-none.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#sidebarMenu' aria-controls='sidebarMenu' aria-expanded='false' aria-label='Toggle navigation')
+			span.navbar-toggler-icon
+
+		.navbar-nav
+			.nav-item.text-nowrap
+			a.nav-link.px-3(href='#') Sign out
+
+	.container-fluid
+		.row
+			nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+				.position-sticky.pt-3
+					ul.nav.flex-column
+						li.nav-item
+							a.nav-link.active(aria-current='page' href='/')
+								span(data-feather='home')
+								|               Home
+						li.nav-item
+							a.nav-link(href='/report')
+								span(data-feather='file')
+								|               Report
+
+
+			main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+				if successStatus
+					.mb-4.card.bg-success.border-success
+						.card-body.text-center
+							p.card-text.fw-bold.text-white !{new Date().toLocaleTimeString('en-GB', {timeZone: 'Europe/London'})} - #{successStatus}
+
+				.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+					h1.h2 Home
+
+				.table-responsive
+					table.table.table-striped.table-sm#attacksTable
+						thead
+							tr
+								th(scope='col') Example
+
+						tbody
+							tr
+								td #{new Date().toLocaleString("en-GB", {timeZone: 'Europe/London'})}
